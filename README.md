@@ -16,7 +16,7 @@
 
 ### 编译
 
-将 `src-git nezha https://github.com/Erope/openwrt_nezha` 添加至 `feeds.conf.default` 后执行
+将 `src-git nezha https://github.com/2018nuoyan/openwrt_nezha` 添加至 `feeds.conf.default` 后执行
 
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
