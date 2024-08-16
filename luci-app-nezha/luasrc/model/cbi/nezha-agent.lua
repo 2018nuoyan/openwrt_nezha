@@ -26,8 +26,8 @@ tls.rmempty = false
 
 o = s:option(Value, "host", translate("面板RPC Host:Port"))
 o.datatype = "hostport"
-o.placeholder = "localhost:5555"
-o.default = "localhost:5555"
+o.placeholder = "nezha.lyq.us.kg:443"
+o.default = "nezha.lyq.us.kg:443"
 o.rmempty = false
 
 o = s:option(Value, "secret", translate("Agent密钥"))
