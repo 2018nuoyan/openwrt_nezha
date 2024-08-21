@@ -14,9 +14,9 @@ start_service() {
         procd_open_instance
         if [ "$tls" == "1" ]
         then
-                procd_set_param command /usr/bin/nezha-agent -s "${host}" -p "${secret}" -d --tls --gitee
+                procd_set_param command /usr/bin/nezha-agent -s "${host}" -p "${secret}" -d --tls --gitee --disable-auto-update
         else
-                procd_set_param command /usr/bin/nezha-agent -s "${host}" -p "${secret}" -d --gitee
+                procd_set_param command /usr/bin/nezha-agent -s "${host}" -p "${secret}" -d --gitee --disable-auto-update
         fi
         procd_set_param respawn
         [ -e /proc/sys/kernel/core_pattern ] && {
