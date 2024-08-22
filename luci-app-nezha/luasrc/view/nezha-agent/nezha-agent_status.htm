@@ -12,7 +12,7 @@ XHR.poll(3, '<%=url([[admin]], [[services]], [[nezha-agent]], [[status]])%>', nu
                 if (data && tb) {
                         if (data.running) {
                                 var links = '<em><b><font color=green>nezha-agent <%:RUNNING%></font></b></em>';
-                                links += '<br/><strong>Version: </strong><font color="red">' + (data.version || 'Unknown') + '</font>';
+                                links += '<br/><strong></strong><em><b><font color="green">Version </strong><font color="red">' + (data.version || 'Unknown') + '</font></b></em>';
                                 tb.innerHTML = links;
                         } else {
                                 tb.innerHTML = '<em><b><font color=red>nezha-agent <%:NOT RUNNING%></font></b></em>';
