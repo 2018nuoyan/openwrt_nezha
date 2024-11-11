@@ -1,0 +1,55 @@
+<!-- /usr/lib/lua/luci/view/frpc/status.htm -->
+
+<script type="text/javascript">//<![CDATA[
+XHR.poll(3, '<%=url([[admin]], [[services]], [[frpc]], [[status]])%>', null,
+    function(x, data) {
+        var tb = document.getElementById('frpc_status');
+
+        if (data && tb) {
+            if (data.status && data.status.running) {
+                var links = '<em><b><font color=green>frpc <%:RUNNING%></font></b></em>';
+                tb.innerHTML = links;
+            } else {
+                tb.innerHTML = '<em><b><font color=red>frpc <%:NOT RUNNING%></font></b></em>';
+            }
+        }
+    }
+);
+
+//]]>
+</script>
+
+<fieldset class="cbi-section" style="text-align: center; width: 100%; margin: 0 auto;">
+    <p id="frpc_status">
+        <em><%:Collecting data...%></em>
+    </p>
+</fieldset>
+
+<script type="text/javascript">
+    (function() {
+        function updateStatus() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    try {
+                        var data = JSON.parse(xhr.responseText);
+                        var statusDiv = document.getElementById("frpc_status");
+                        var isRunning = data.status && data.status.running;  // 修正这里的条件检查
+
+                        // 确保状态显示更新
+                       statusDiv.innerHTML = "<strong style='color: " + (isRunning ? "green" : "red") + ";'>" +
+                                              (isRunning ? "Running" : "Stopped") + "</strong>";
+                    } catch (e) {
+                        console.error("Failed to parse status response:", e);
+                    }
+                }
+            };
+            xhr.open("GET", "<%=luci.dispatcher.build_url('admin', 'services', 'frpc', 'status')%>", true);
+            xhr.send();
+        }
+
+        setInterval(updateStatus, 5000);  // 每5秒更新一次状态
+        updateStatus();  // 页面加载时立即获取状态
+    })();
+</script>
+

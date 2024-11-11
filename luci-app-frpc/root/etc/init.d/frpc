@@ -1,0 +1,35 @@
+#!/bin/sh /etc/rc.common
+USE_PROCD=1
+
+START=90
+STOP=10
+
+enabled="$(uci get frpc.config.enabled 2>/dev/null || echo '0')"
+config_file="$(uci get frpc.config.config_file 2>/dev/null || echo '/etc/config/frpc.toml')"
+
+start_service() {
+    [ "$enabled" = "1" ] || return
+
+    procd_open_instance
+
+    # 构建启动 frpc 的命令
+    command="/usr/bin/frpc -c ${config_file}"
+
+    # 输出生成的完整命令以便调试
+    echo "Generated command: $command"
+
+    # 设定procd参数
+    procd_set_param command $command
+    procd_set_param respawn
+
+    procd_close_instance
+}
+
+stop_service() {
+    procd_kill
+}
+
+service_triggers() {
+    procd_add_reload_trigger "frpc"
+}
+

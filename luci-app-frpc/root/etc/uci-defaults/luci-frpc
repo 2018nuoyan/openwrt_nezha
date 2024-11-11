@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@frpc[-1]
+	add ucitrack frpc
+	set ucitrack.@frpc[-1].init=frpc
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0
