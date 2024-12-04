@@ -26,7 +26,7 @@ insecure_tls="$(uci get nezha-agent.config.insecure_tls 2>/dev/null || echo 'fal
 insecure_tls=$([ "$insecure_tls" = "1" ] && echo "true" || echo "false")
 ip_report_period="$(uci get nezha-agent.config.ip_report_period 2>/dev/null || echo '1800')"
 report_delay="$(uci get nezha-agent.config.report_delay 2>/dev/null || echo '1')"
-host="$(uci get nezha-agent.config.host 2>/dev/null || echo 'localhost:8008')"
+host="$(uci get nezha-agent.config.host 2>/dev/null || echo 'data.example.com:8008')"
 skip_conn="$(uci get nezha-agent.config.skip_conn 2>/dev/null || echo 'false')"
 skip_conn=$([ "$skip_conn" = "1" ] && echo "true" || echo "false")
 skip_procs="$(uci get nezha-agent.config.skip_procs 2>/dev/null || echo 'false')"
