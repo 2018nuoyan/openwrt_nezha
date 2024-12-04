@@ -19,16 +19,20 @@ tls.rmempty = false
 -- 面板RPC Host:Port
 o = s:option(Value, "host", translate("面板RPC Host:Port"))
 o.datatype = "hostport"
-o.placeholder = "localhost:8008"
-o.default = "localhost:8008"
+o.placeholder = "jk.119867.xyz:8008"
+o.default = "jk.119867.xyz:8008"
 o.rmempty = false
 
--- secret密钥
-o = s:option(Value, "secret", translate("secret密钥"))
+-- Agent密钥
+o = s:option(Value, "secret", translate("Agent密钥"))
 o.placeholder = ""
 o.default = ""
 o.password = true
 o.rmempty = false
+
+-- 使用Gitee获取更新
+gitee = s:option(Flag, "gitee", translate("使用Gitee获取更新"))
+gitee.rmempty = false
 
 -- 开启调试信息
 debug = s:option(Flag, "debug", translate("开启调试信息"))
@@ -74,13 +78,18 @@ report_delay.datatype = "uinteger"
 report_delay.default = 1
 report_delay.rmempty = true
 
+-- 不监控连接数
+skip_conn = s:option(Flag, "skip_conn", translate("不监控连接数"))
+skip_conn.rmempty = true
+
+-- 不监控进程数
+skip_procs = s:option(Flag, "skip_procs", translate("不监控进程数"))
+skip_procs.rmempty = true
+
 -- 启用温度监控
 temperature = s:option(Flag, "temperature", translate("启用温度监控"))
 temperature.rmempty = true
 
--- 使用Gitee获取更新
-gitee = s:option(Flag, "gitee", translate("使用Gitee获取更新"))
-gitee.rmempty = false
 
 -- 使用IPv6的位置上报
 use_ipv6_countrycode = s:option(Flag, "use_ipv6_countrycode", translate("使用IPv6的位置上报"))
@@ -105,4 +114,3 @@ function generate_button.write(_, section)
 end
 
 return m
-
