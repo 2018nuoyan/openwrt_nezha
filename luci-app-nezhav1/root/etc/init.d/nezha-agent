@@ -73,7 +73,7 @@ echo "use_gitee_to_upgrade: $gitee" >> "$config_file"
     
 
 	# 构建基础命令行
-    command="/usr/bin/nezha-agent -c $config_file"
+    command="/usr/bin/nezha-agentv1 -c $config_file"
 
     # 输出生成的完整命令行以调试
     echo "Generated command: $command"
