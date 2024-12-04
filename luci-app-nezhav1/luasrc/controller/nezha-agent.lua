@@ -17,7 +17,7 @@ function act_status()
         e.running = luci.sys.call("pgrep nezha-agent >/dev/null") == 0
         e.enabled = trim(luci.sys.exec("uci get nezha-agent.config.enabled"))
         e.tls = trim(luci.sys.exec("uci get nezha-agent.config.tls"))
-        e.version = trim(luci.sys.exec("nezha-agent --version | awk '{print $NF}'"))
+        e.version = trim(luci.sys.exec("nezha-agentv1 --version | awk '{print $NF}'"))
 
         luci.sys.call("/etc/init.d/nezha-agent enable")
         luci.http.prepare_content("application/json")
