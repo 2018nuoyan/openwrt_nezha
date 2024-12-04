@@ -19,12 +19,12 @@ tls.rmempty = false
 -- 面板RPC Host:Port
 o = s:option(Value, "host", translate("面板RPC Host:Port"))
 o.datatype = "hostport"
-o.placeholder = "jk.119867.xyz:8008"
-o.default = "jk.119867.xyz:8008"
+o.placeholder = "data.example.com:8008"
+o.default = "data.example.com:8008"
 o.rmempty = false
 
--- Agent密钥
-o = s:option(Value, "secret", translate("Agent密钥"))
+-- client_secret密钥
+o = s:option(Value, "secret", translate("client_secret密钥"))
 o.placeholder = ""
 o.default = ""
 o.password = true
