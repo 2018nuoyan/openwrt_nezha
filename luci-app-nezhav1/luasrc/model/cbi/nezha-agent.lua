@@ -1,6 +1,6 @@
 m = Map("nezha-agent")
 m.title = translate("Nezha Agent")
-m.description = translate("Nezha Agent For OpenWRT")
+m.description = translate("Nezha For OpenWRT")
 
 m:section(SimpleSection).template = "nezha-agent/nezha-agent_status"
 
