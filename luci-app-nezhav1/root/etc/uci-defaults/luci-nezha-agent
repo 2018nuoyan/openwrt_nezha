@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# 设置权限
+chmod +x /etc/init.d/nezha-agent
+
 uci -q batch <<-EOF >/dev/null
 	delete ucitrack.@nezha-agent[-1]
 	add ucitrack nezha-agent
